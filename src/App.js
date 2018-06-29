@@ -8,13 +8,21 @@ import "./App.css";
 @observer
 class App extends Component{
 
+    componentDidMount(){
+      this.props.rootStore.data.initData(); //load data on start up
+    }
 
     render(){ 
-    return(
-      <div className="App" data-test='component-app'>
-
-      </div>
-    );
+      const categories = this.props.rootStore.data.categories; 
+      return(
+        <div className="App" data-test='component-app'>
+            <ul>
+                {categories.map((c, i) => {
+                  return <li key={i}><span>{c.shortname}</span> Video Counts: {c.total_videos}</li>
+                })}
+            </ul>
+        </div>
+      );
   }
 }
 

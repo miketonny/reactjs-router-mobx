@@ -7,8 +7,9 @@ const _apiBaseUrl = 'https://api.avgle.com/v1/';
 
 export async function fetchCategories(){
     try { 
-        const res = await axios(`${_apiBaseUrl}categories`); 
-        return await res.json(); //returns the data from api..
+        const res = await axios(`${_apiBaseUrl}categories`);  
+        const cats = res.data.response.categories; 
+        return cats; //returns the data from api..
     } catch (err) {
         console.log(err); 
     }
