@@ -1,0 +1,41 @@
+
+
+.App {
+    margin: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+.App h2{
+    color: red;
+}
+
+.App .hidden{
+    display: none; 
+}
+
+
+.thumb{
+    position: relative;
+    max-width: 20rem;
+    video{
+        width: 18rem; 
+        border-radius: 5px;
+    }
+    span{
+        width: 18rem;
+    }
+    label{
+        position: absolute;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        border-radius: 4px;
+        right: 1rem;
+        bottom: 4rem;
+    }
+}
+
+.video{
+    text-align: center;
+    h2{
+        color:black;
+    }
+}
