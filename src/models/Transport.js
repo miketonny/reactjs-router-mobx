@@ -17,7 +17,7 @@ export async function fetchCategories(){
 
 export async function fetchCategoryVideoList(id){
     try { 
-        const res = await axios(`${_apiBaseUrl}videos/${id}?o=tr&t=m&c=1&type=public&limit=2`);   
+        const res = await axios(`${_apiBaseUrl}videos/${id}?o=tr&t=m&c=1&type=public&limit=10`);   
         return res.data.response.videos; //returns the data from api..
     } catch (err) {
         console.log(err); 

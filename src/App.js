@@ -5,6 +5,7 @@ import { Menu } from 'semantic-ui-react';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import Category from './components/Category';
 import Video from './components/Video';
+import Dashboard from './components/Dashboard';
 import "./App.scss";
 
 
@@ -31,6 +32,7 @@ class App extends Component{
                     })}
               </Menu> 
               
+              <Route exact path={`/`} component={Dashboard} />          
               <Route exact path={`/:category`} component={Category} />          
               <Route exact path={`/:category/:vid`} component={Video}/>
           </div>
