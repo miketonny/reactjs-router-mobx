@@ -13,7 +13,7 @@ export default class DataStore {
 
     @action
     async initData(){
-       const cats = await fetchCategories();  
+        const cats = await fetchCategories();  
         this.categories.replace(cats);
     }
 
