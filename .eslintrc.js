@@ -10,5 +10,6 @@ module.exports = {
         "react/jsx-filename-extension": "off",
         "linebreak-style": 0,
         "indent": "off"
-    }
+    },
+    "parser": "babel-eslint"
 };

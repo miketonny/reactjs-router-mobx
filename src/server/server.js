@@ -1,10 +1,19 @@
 const express = require('express');
+const path = require('path');
 const { fetchCategories, fetchCategoryVideoList, getVideoByID } = require('../models/Service');
 
 const app = express();
 const port = 8080;
 
 app.use(express.static('dist'));
+
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'), (err) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
+});
 
 app.get('/api/categories', async (req, res) => {
     try {

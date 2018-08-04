@@ -1,11 +1,9 @@
-import { computed, action } from "mobx"; 
-import dataStore from './DataStore';
-import uiStore from './UIStore';
-import { fetchCategories } from "./Transport";
+import DataStore from './DataStore';
+import UiStore from './UIStore';
 
-export default class RootStore { 
+export default class RootStore {
     constructor() {
-        this.data = new dataStore(this);
-        this.ui = new uiStore(this); 
+        this.data = new DataStore(this);
+        this.ui = new UiStore(this);
     }
 }

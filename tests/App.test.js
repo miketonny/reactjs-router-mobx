@@ -1,8 +1,8 @@
-import React from 'react'; 
-import {shallow} from 'enzyme';
+import React from 'react';
+import {shallow } from 'enzyme';
 import {findByTestAttr} from './testUtils';
 
-import App from '../src/App';  
+import App from '../src/App';
 
 /**
  * 

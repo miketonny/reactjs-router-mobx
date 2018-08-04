@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import App from './App';
-import RootStore from './models/rootStore';
+import RootStore from './models/RootStore';
 
 const store = new RootStore();
 
 ReactDOM.render(
-    <Provider rootStore={store}>
-        <App />
-    </Provider>,
+  <Provider rootStore={store}>
+    <App />
+  </Provider>,
     document.getElementById('root')
 );
