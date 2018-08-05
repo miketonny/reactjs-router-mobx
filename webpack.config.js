@@ -1,9 +1,9 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: ["babel-polyfill", "./src/index.js"],
-  mode: "development",
+  entry: ['babel-polyfill', './src/index.js'],
+  mode: 'development',
   module: {
     rules: [
       {
@@ -13,32 +13,26 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.scss$/, 
-        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
-    path: path.resolve(__dirname, "dist/"),
-    publicPath: "/dist/",
-    filename: "bundle.js"
+    path: path.resolve(__dirname, 'public/'),
+    publicPath: '/public/',
+    filename: 'bundle.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, "public/"),
+    contentBase: path.join(__dirname, 'public/'),
     port: 3000,
-    publicPath: "http://localhost:3000/dist/",
+    publicPath: 'http://localhost:3000/dist/',
+    historyApiFallback: true,
     hotOnly: true,
-    proxy: {
-      '/api/**': {
-        target: 'http://localhost:8080/api/',
-        secure: false,
-        changeOrigin: true
-      }
-    }
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 };

@@ -9,9 +9,7 @@ export default class UIStore {
         this.root = rootStore;
         this.user = {
             email: '123@abc.com',
-            token: 'eagewate'
+            token: 'geatew'
         };
     }
-
-    
 }

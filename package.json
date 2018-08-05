@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server --inline --content-base public --history-api-fallback",
+    "start:prod": "webpack && node server.js",
+    "prod": "SET \"NODE_ENV=production\" && npm start"
   },
   "author": "Michael Zhang",
   "license": "ISC",
@@ -40,7 +42,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "compression": "^1.7.3",
     "express": "^4.16.3",
+    "if-env": "^1.0.4",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.3",
     "react": "^16.4.1",
