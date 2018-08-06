@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Redirect } from 'react-router-dom';
-import Navbar from './Menu';
+import Menu from './Menu';
 
 
 @inject('rootStore')
 @observer
-class Wellness extends Component {
+class NoMatch extends Component {
     render() {
         const { rootStore } = this.props;
         if (!rootStore.ui.loginStatus()) return <Redirect to="/" />;
         return (
             <div>
-                <Navbar />
-                <h2>Wellness Page</h2>
+                <Menu />
+                <h2> 404 Page Not Found </h2>
             </div>
         );
     }
 }
 
-export default Wellness;
+export default NoMatch;

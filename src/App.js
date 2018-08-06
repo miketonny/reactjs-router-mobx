@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { inject, observer } from 'mobx-react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Summary from './components/Summary';
 import Wellness from './components/Wellness';
+import TrainingLoad from './components/TrainingLoad';
+import NoMatch from './components/NoMatch';
 import './App.scss';
 import Login from './components/Login';
 
@@ -19,9 +21,13 @@ class App extends Component {
       return (
         <Router basename="/">
           <div className="App" data-test="component-app">
-            <Route exact path="/" component={Login} />
-            <Route exact path="/teamsummary" component={Summary} />
-            <Route exact path="/wellness" component={Wellness} />
+            <Switch>
+              <Route exact path="/" component={Login} />
+              <Route exact path="/teamsummary" component={Summary} />
+              <Route exact path="/wellness" component={Wellness} />
+              <Route exact path="/trainingload" component={TrainingLoad} />
+              <Route component={NoMatch} />
+            </Switch>
           </div>
         </Router>
       );
