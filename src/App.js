@@ -6,8 +6,9 @@ import Summary from './components/Summary';
 import Wellness from './components/Wellness';
 import TrainingLoad from './components/TrainingLoad';
 import NoMatch from './components/NoMatch';
-import './App.scss';
 import Login from './components/Login';
+import ForgotPassword from './components/ForgotPassword';
+import Success from './components/Success';
 
 
 @inject('rootStore')
@@ -26,6 +27,8 @@ class App extends Component {
               <Route exact path="/teamsummary" component={Summary} />
               <Route exact path="/wellness" component={Wellness} />
               <Route exact path="/trainingload" component={TrainingLoad} />
+              <Route exact path="/forgotpassword" component={ForgotPassword} />
+              <Route exact path="/success" component={Success} />
               <Route component={NoMatch} />
             </Switch>
           </div>

@@ -9,7 +9,8 @@ module.exports = {
         "comma-dangle": "off",
         "react/jsx-filename-extension": "off",
         "linebreak-style": 0,
-        "indent": "off"
+        "indent": "off",
+        "react/jsx-one-expression-per-line": "off",
     },
     "parser": "babel-eslint"
 };

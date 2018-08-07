@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import App from './App';
 import RootStore from './models/RootStore';
+import './App.scss';
 
 const store = new RootStore();
 

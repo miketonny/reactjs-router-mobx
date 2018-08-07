@@ -7,27 +7,39 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 @inject('rootStore')
 @observer
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    const { rootStore, history } = this.props;
+    this.ui = rootStore.ui;
+    this.history = history;
+  }
+
     handleClose = () => {
-        const { rootStore } = this.props;
-        rootStore.ui.closeMenu();
+        this.ui.closeMenu();
     }
 
     handleOpen = (event) => {
-        const { rootStore } = this.props;
-        rootStore.ui.openMenu(event.currentTarget);
+        this.ui.openMenu(event.currentTarget);
+    }
+
+    handleSignOut = () => {
+      this.ui.closeMenu();
+      // sign user out and clear user from storage.
+      this.ui.clearUser();
+      this.history.push('/');
     }
 
     render() {
-        const { rootStore } = this.props;
         return (
           <AppBar position="static" color="default">
             <Toolbar>
-              <img width="200px" height="50px" src="" />
+              <img width="200px" height="50px" src="" alt="logo" />
               <Link to="/teamsummary">
                 <Button color="inherit">Team Summary</Button>
               </Link>
@@ -40,7 +52,7 @@ class Navbar extends Component {
               <div style={{ flex: 1 }} />
               <div>
                 <IconButton
-                  aria-owns={rootStore.ui.menuAnchorEl ? 'menu-appbar' : null}
+                  aria-owns={this.ui.menuAnchorEl ? 'menu-appbar' : null}
                   aria-haspopup="true"
                   onClick={this.handleOpen}
                 >
@@ -48,7 +60,7 @@ class Navbar extends Component {
                 </IconButton>
                 <Menu
                   id="menu-appbar"
-                  anchorEl={rootStore.ui.menuAnchorEl}
+                  anchorEl={this.ui.menuAnchorEl}
                   anchorOrigin={{
                         vertical: 'top',
                         horizontal: 'right',
@@ -57,11 +69,12 @@ class Navbar extends Component {
                         vertical: 'top',
                         horizontal: 'right',
                     }}
-                  open={Boolean(rootStore.ui.menuAnchorEl)}
+                  open={Boolean(this.ui.menuAnchorEl)}
                   onClose={this.handleClose}
                 >
                   <MenuItem onClick={this.handleClose}>Profile</MenuItem>
                   <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleSignOut}>Sign out</MenuItem>
                 </Menu>
               </div>
             </Toolbar>
@@ -70,4 +83,9 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+// with mobx inject, base component is wrapped with store injected, use wrappedcomp
+Navbar.wrappedComponent.propTypes = {
+  rootStore: PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
+};
+
+export default withRouter(Navbar);

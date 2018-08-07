@@ -7,19 +7,38 @@ export default class UIStore {
 
     @observable menuAnchorEl;
 
+    @observable rememberMe;
+
+    @observable failedLogin;
+
     constructor(rootStore) {
         this.root = rootStore;
         this.user = {
-            email: '123@abc.com',
-            token: 'geawgw'
+            email: '',
+            password: '',
+            token: ''
         };
     }
 
     @action
     loginStatus() {
         // mock login============================
-        if (this.user.token === '') return false;
+        // fetch login status from localstorage
+        const usr = this.getUser();
+        if (!usr) return false;
         return true;
+    }
+
+    @action
+    login() {
+        // validate login info and log user into system
+        if (this.user.email && this.user.password) {
+            this.user.token = '12345';
+            this.saveUser();
+            return true;
+        }
+        this.failedLogin = true;
+        return false;
     }
 
     @action
@@ -31,4 +50,29 @@ export default class UIStore {
     closeMenu() {
         this.menuAnchorEl = null;
     }
+
+    @action
+    rememberMeToggle() {
+        this.rememberMe = !this.rememberMe;
+    }
+
+    @action
+    clearUser() {
+        this.user = {
+            email: '',
+            password: '',
+            token: ''
+        };
+        localStorage.removeItem('user');
+    }
+
+    saveUser() {
+        localStorage.setItem('user', JSON.stringify(this.user));
+    }
+
+    getUser() {
+        return localStorage.getItem('user');
+    }
+
+
 }

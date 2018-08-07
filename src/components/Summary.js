@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
 import Navbar from './Menu';
 import Chart from './Chart';
 import SummaryTable from './SummaryTable';
@@ -16,7 +17,7 @@ class Summary extends Component {
         return (
           <Grid container spacing={16}>
             <Navbar />
-            <h2> Summary </h2>
+            <h2>Summary</h2>
             <Grid container justify="center">
               <Chart />
             </Grid>
@@ -27,5 +28,11 @@ class Summary extends Component {
         );
     }
 }
+
+
+// with mobx inject, base component is wrapped with store injected, use wrappedcomp
+Summary.wrappedComponent.propTypes = {
+  rootStore: PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
+};
 
 export default Summary;
