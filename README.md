@@ -8,20 +8,20 @@ Also catches all url requests in server side so that 'F5'/Refresh won't break ap
 
 
 Tools:
-Babel 7.x
-Reactjs v16.10.2
-React Router v5.x
-Express Node 
-Webpack
-Mobx v5.x
-Material-UI v4.5.1
-Hot-loader
-
-Styles:
-
-scss
-
-Tests:
-
+Babel 7.x  
+Reactjs v16.10.2  
+React Router v5.x  
+Express Node  
+Webpack  
+Mobx v5.x  
+Material-UI v4.5.1  
+Hot-loader  
+  
+Styles:  
+  
+scss  
+  
+Tests:  
+  
 Jest
 Enzyme
